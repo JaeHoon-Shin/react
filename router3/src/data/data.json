@@ -1,0 +1,138 @@
+{
+    "movies": [
+        {
+            "photo": "./img/01.jpg",
+            "name": "아이언맨"
+        },
+        {
+            "photo": "./img/02.jpg",
+            "name": "아이언맨"
+        },
+        {
+            "photo": "./img/03.jpg",
+            "name": "아이언맨"
+        },
+        {
+            "photo": "./img/04.jpg",
+            "name": "아이언맨"
+        },
+        {
+            "photo": "./img/05.jpg",
+            "name": "아이언맨"
+        },
+        {
+            "photo": "./img/06.jpg",
+            "name": "아이언맨"
+        },
+        {
+            "photo": "./img/07.jpg",
+            "name": "아이언맨"
+        },
+        {
+            "photo": "./img/08.jpg",
+            "name": "아이언맨"
+        }
+    ],
+    "music": [
+        {
+            "photo": "./img/01.jpg",
+            "name": "붉은노을"
+        },
+        {
+            "photo": "./img/02.jpg",
+            "name": "붉은노을"
+        },
+        {
+            "photo": "./img/03.jpg",
+            "name": "붉은노을"
+        },
+        {
+            "photo": "./img/04.jpg",
+            "name": "붉은노을"
+        },
+        {
+            "photo": "./img/05.jpg",
+            "name": "붉은노을"
+        },
+        {
+            "photo": "./img/06.jpg",
+            "name": "붉은노을"
+        },
+        {
+            "photo": "./img/07.jpg",
+            "name": "붉은노을"
+        },
+        {
+            "photo": "./img/08.jpg",
+            "name": "붉은노을"
+        }
+    ],
+    "apps": [
+        {
+            "photo": "./img/01.jpg",
+            "name": "ios"
+        },
+        {
+            "photo": "./img/02.jpg",
+            "name": "ios"
+        },
+        {
+            "photo": "./img/03.jpg",
+            "name": "ios"
+        },
+        {
+            "photo": "./img/04.jpg",
+            "name": "ios"
+        },
+        {
+            "photo": "./img/05.jpg",
+            "name": "ios"
+        },
+        {
+            "photo": "./img/06.jpg",
+            "name": "ios"
+        },
+        {
+            "photo": "./img/07.jpg",
+            "name": "ios"
+        },
+        {
+            "photo": "./img/08.jpg",
+            "name": "ios"
+        }
+    ],
+    "software": [
+        {
+            "photo": "./img/01.jpg",
+            "name": "vscode"
+        },
+        {
+            "photo": "./img/02.jpg",
+            "name": "vscode"
+        },
+        {
+            "photo": "./img/03.jpg",
+            "name": "vscode"
+        },
+        {
+            "photo": "./img/04.jpg",
+            "name": "vscode"
+        },
+        {
+            "photo": "./img/05.jpg",
+            "name": "vscode"
+        },
+        {
+            "photo": "./img/06.jpg",
+            "name": "vscode"
+        },
+        {
+            "photo": "./img/07.jpg",
+            "name": "vscode"
+        },
+        {
+            "photo": "./img/08.jpg",
+            "name": "vscode"
+        }
+    ]
+}
