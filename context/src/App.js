@@ -1,12 +1,14 @@
 import { createContext, useContext } from 'react';
 import './App.css';
-const Mycontext = createContext('hello')
+import { Mycontext } from './Context';
+import List from './List';
+
 function App() {
-  const num = 100;
+  const num = 200;
   /* const fn=()=>{return 1000} */
   return (
     <div className="App">
-      <Mycontext.Provider value={num}>
+      <Mycontext.Provider value={[num,10,20,300,41]}>
         
         <List />
         
@@ -14,15 +16,5 @@ function App() {
       </div>
   );
 }
-function List(){
-  const value = useContext(Mycontext);
-  return(
-    <>
-      List{value}<br/>
-      
-    </>
-  )
-}
-function Item(){}
-function Insert(){}
+
 export default App;
