@@ -1,19 +1,26 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useState } from 'react';
 import './App.css';
 import { Mycontext } from './Context';
 import List from './List';
 
 function App() {
-  const num = 200;
+  const [data, setData] = useState([{
+    num: 0, todo: 'aaaaaaa'
+  }, {
+    num: 1, todo: 'bbbbbb'
+  }
+  , {
+    num: 2, todo: 'cccccc'
+  }]);
   /* const fn=()=>{return 1000} */
   return (
     <div className="App">
-      <Mycontext.Provider value={[num,10,20,300,41]}>
-        
+      <Mycontext.Provider value={{ data: data, setData: setData }}>
+
         <List />
-        
+
       </Mycontext.Provider>
-      </div>
+    </div>
   );
 }
 

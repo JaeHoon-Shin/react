@@ -1,12 +1,18 @@
-import React,{useContext} from 'react'
+import React, { useContext } from 'react'
 import { Mycontext } from './Context';
+import Item from './Item';
 
 const List = () => {
-    const [a,...b] = useContext(Mycontext);
-    console.log(a)
-  return (
-    <div>List{value[4]}</div>
-  )
+    const { data } = useContext(Mycontext);
+    
+    return (
+        <div>
+            {data.map((obj, key) => (
+                <Item key={key} obj={obj}></Item>
+                )
+            )
+            }</div>
+    )
 }
 
 export default List
