@@ -8,6 +8,7 @@ const Item = ({ obj,number }) => {
         setData(value)
     }
     const state = (e) => {
+        
         e.target.classList.toggle('active')
         update();
     }
