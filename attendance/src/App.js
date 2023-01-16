@@ -15,7 +15,7 @@ function App() {
   const elBox = useRef();
   function plus(){
     elBox.current.classList.toggle('active')
-    elList.current.classList.remove('active')
+    //elList.current.classList.remove('active')
   }
   
   return (
@@ -24,7 +24,8 @@ function App() {
       
       <Mycontext.Provider value={{ data: data, elBox:elBox, elList:elList, updataNum: updataNum, elInput: elInput, elItems: elItems, count:count, setData: setData, elModify:elModify, setElmodify: setElmodify }}>
         <button className="plusBox" onClick={plus}>+</button>
-        <List></List>
+       {data && <> <List></List></>}
+
         <Insert></Insert>
       </Mycontext.Provider>
     </div>

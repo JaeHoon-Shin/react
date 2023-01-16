@@ -9,6 +9,7 @@
     background-color: beige;
     border-radius: 10px;
     padding: 20px;
+
     .plusBox {
         position: relative;
         right: 0;
@@ -23,14 +24,14 @@
 
     .list {
         width: 100%;
-        display: none;
+        display: block;
         background-color: azure;
         border-radius: 10px;
         padding: 5px;
 
         >div {
 
-            
+
             ul {
                 margin: 0;
                 padding: 0;
@@ -38,29 +39,33 @@
                 list-style-type: none;
                 border-top: 1px solid black;
                 border-bottom: 1px solid black;
-                >p{
+
+                >p {
                     display: flex;
                     align-items: center;
                     border-top: 1px solid black;
                     margin: 0;
-                    &:nth-child(1){
-                        border-top: 0px; 
+
+                    &:nth-child(1) {
+                        border-top: 0px;
                     }
+
                     li {
 
                         width: 100%;
                         display: flex;
                         align-items: center;
-                       
+
                         p {
                             width: 50%;
                             margin-left: 10px;
-                           
+
                         }
 
                         div {
                             text-align: end;
                             width: 50%;
+
                             button {
                                 width: 50px;
                                 height: 30px;
@@ -70,11 +75,6 @@
                     }
                 }
             }
-
-        }
-
-        &.active {
-            display: block;
         }
     }
 

@@ -7,14 +7,13 @@ const Item = ({ obj }) => {
     const remove = (n) => {
         let value = data.filter((e) => e.num != n);
         setData(value);
-
     }
     const modify = (n) => {
         elBox.current.classList.toggle('active')
         setElmodify(true);
         updataNum.current = n;
-        let na = data.filter((e) => e.num == n);
-        elInput.current.value = na[0].name;
+        let mName = data.filter((e) => e.num == n);
+        elInput.current.value = mName[0].name;
 
     }
     return (
