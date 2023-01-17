@@ -4,8 +4,6 @@ export const ReducerCon = createContext(null);
 
 const ReducerContext = ({ children }) => {
 
-
-
     const reducerFn = (state, action) => {
         switch (action.type) {
             case 'plus':
@@ -17,7 +15,6 @@ const ReducerContext = ({ children }) => {
         }
     }
 
-    
     const [data, dispatch] = useReducer(reducerFn, 0);  // (일할 장소, 값)
 
     return (

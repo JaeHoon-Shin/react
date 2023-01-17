@@ -1,0 +1,110 @@
+.App {
+    margin: 300px auto;
+    width: 800px;
+    display: flex;
+    position: relative;
+    .list {
+        width: 50%;
+        text-align: center;
+
+
+        .text-box {
+            background-color: antiquewhite;
+            border-radius: 50px 0 0 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100px;
+            text-align: center;
+            position: relative;
+            >span {
+                font-size: 26px;
+            }
+            >p {
+                margin: 0;
+                padding: 0;
+            }
+            >button {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 50px;
+                height: 50px;
+                border: none;
+                cursor: pointer;
+            }
+        }
+
+        .list-ul {
+            border: 1px solid black;
+            padding: 0;
+            margin: 0;
+            background-color: aliceblue;
+
+            li {
+                display: flex;
+                align-items: center;
+                text-align: center;
+                justify-content: space-between;
+                border-bottom: 1px solid black;
+
+                p {
+                    width: 100px;
+                }
+
+                span {
+                    width: 200px
+                }
+
+                &:nth-last-child(1) {
+                    border-bottom: 0px
+                }
+            }
+        }
+    }
+
+    .insert {
+        width: 45%;
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        right: 0;
+        top: 30%;
+        >p{
+            font-size: 24px;
+            text-align: center;
+        }
+        >input[type='text'] {
+            
+            text-align: center;
+            outline: none;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            height: 20px;
+        }
+
+        >textarea {
+            
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            outline: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .button-box {
+            width: 100%;
+            >button {
+                width: 50%;
+                height: 50px;
+                border: 1px solid black;
+                background-color: bisque;
+            }
+        }
+        &.active{
+            display: flex;
+        }
+    }
+}
