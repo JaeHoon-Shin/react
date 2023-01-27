@@ -4,7 +4,9 @@ import Context from './Context';
 import Main from './component/Main';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import AnimalSales from './component/AnimalSales';
+import AnimalInfo from './component/AnimalInfo';
 function App() {
+  
   return (
     <>
       <BrowserRouter>
@@ -25,19 +27,20 @@ function App() {
               <li><Link to="/animal-list">반려동물 자랑 게시판</Link></li>
               <li><Link to="/qna">문의 게시판</Link></li>
             </ul>
-
           </div>
         </header>
         <Context>
-        <Routes>
-          <Route path='/' element={<Main />} />
-          <Route path='/animal' element={<AnimalSales />}></Route>
-          <Route path='/sinup'></Route>
-
-        </Routes>
-        
+          <main>
           
+            <Routes>
+              <Route path='/' element={<Main />} />
+              <Route path='/animal' element={<AnimalSales/>}></Route>
+              <Route path='/sinup'></Route>
+              <Route path='/animalInfo/:id' element={<AnimalInfo />}></Route>
+            </Routes>
+          </main>
         </Context>
+
       </BrowserRouter>
     </>
   );

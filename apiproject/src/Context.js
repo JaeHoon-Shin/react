@@ -5,13 +5,15 @@ export const AnimalContext = createContext(null);
 
 const Context = ({ children }) => {
 
-    const [pharmacy, setPharmacy] = useState(null);
-    const [hospital, setHospital1] = useState(null);
-    const [animal, setAnimal] = useState(null);
-    const [animalImg, setAnimalImg] = useState(null);
+  /*   const [pharmacy, setPharmacy] = useState(null);
+    const [hospital, setHospital1] = useState(null); */
+    const [animal, setAnimal] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [totalAni, setTotalAni] = useState([]);
+
+  //console.log(a.replace(/[^\uAC00-\uD7AF\u1100-\u11FF\u3130-\u318F]/gi,"").replace("함초롬바탕"));  //한글만 뽑아냄
+
+
 
     const fetchUsers = async () => {
         try {
@@ -20,34 +22,47 @@ const Context = ({ children }) => {
             // loading 상태를 true 로 바꿉니다.
             setLoading(true);
             // 동물 약국 데이터
-            const pharmacy1 = await axios.get('http://openapi.seoul.go.kr:8088/674848546c73696e3130375966526375/json/LOCALDATA_020302/1/1000/');
-            const pharmacy2 = await axios.get('http://openapi.seoul.go.kr:8088/674848546c73696e3130375966526375/json/LOCALDATA_020302/1001/2000/');
-            const pharmacy3 = await axios.get('http://openapi.seoul.go.kr:8088/674848546c73696e3130375966526375/json/LOCALDATA_020302/2001/3000/');
-            const pharmacy4 = await axios.get('http://openapi.seoul.go.kr:8088/674848546c73696e3130375966526375/json/LOCALDATA_020302/3001/4000/');
-            setPharmacy(pharmacy1.data.LOCALDATA_020302.row.filter((obj) => obj.DTLSTATENM == '정상').concat(pharmacy2.data.LOCALDATA_020302.row.filter((obj) => obj.DTLSTATENM == '정상'), pharmacy3.data.LOCALDATA_020302.row.filter((obj) => obj.DTLSTATENM == '정상'), pharmacy4.data.LOCALDATA_020302.row.filter((obj) => obj.DTLSTATENM == '정상')));
+            // const pharmacy1 = await axios.get('http://openapi.seoul.go.kr:8088/674848546c73696e3130375966526375/json/LOCALDATA_020302/1/1000/');
+            // const pharmacy2 = await axios.get('http://openapi.seoul.go.kr:8088/674848546c73696e3130375966526375/json/LOCALDATA_020302/1001/2000/');
+            // const pharmacy3 = await axios.get('http://openapi.seoul.go.kr:8088/674848546c73696e3130375966526375/json/LOCALDATA_020302/2001/3000/');
+            // const pharmacy4 = await axios.get('http://openapi.seoul.go.kr:8088/674848546c73696e3130375966526375/json/LOCALDATA_020302/3001/4000/');
+            // setPharmacy(pharmacy1.data.LOCALDATA_020302.row.filter((obj) => obj.DTLSTATENM == '정상').concat(pharmacy2.data.LOCALDATA_020302.row.filter((obj) => obj.DTLSTATENM == '정상'), pharmacy3.data.LOCALDATA_020302.row.filter((obj) => obj.DTLSTATENM == '정상'), pharmacy4.data.LOCALDATA_020302.row.filter((obj) => obj.DTLSTATENM == '정상')));
 
             //동물 병원 데이터
-            const hospital1 = await axios.get('http://openapi.seoul.go.kr:8088/674848546c73696e3130375966526375/json/LOCALDATA_020301/1/1000/')
-            const hospital2 = await axios.get('http://openapi.seoul.go.kr:8088/674848546c73696e3130375966526375/json/LOCALDATA_020301/1001/2000/')
-            const hospital3 = await axios.get('http://openapi.seoul.go.kr:8088/674848546c73696e3130375966526375/json/LOCALDATA_020301/2001/3000/')
-            setHospital1(hospital1.data.LOCALDATA_020301.row.filter((obj) => obj.DTLSTATENM == '정상').concat(hospital2.data.LOCALDATA_020301.row.filter((obj) => obj.DTLSTATENM == '정상'), hospital3.data.LOCALDATA_020301.row.filter((obj) => obj.DTLSTATENM == '정상')))
+            // const hospital1 = await axios.get('http://openapi.seoul.go.kr:8088/674848546c73696e3130375966526375/json/LOCALDATA_020301/1/1000/')
+            // const hospital2 = await axios.get('http://openapi.seoul.go.kr:8088/674848546c73696e3130375966526375/json/LOCALDATA_020301/1001/2000/')
+            // const hospital3 = await axios.get('http://openapi.seoul.go.kr:8088/674848546c73696e3130375966526375/json/LOCALDATA_020301/2001/3000/')
+            // setHospital1(hospital1.data.LOCALDATA_020301.row.filter((obj) => obj.DTLSTATENM == '정상').concat(hospital2.data.LOCALDATA_020301.row.filter((obj) => obj.DTLSTATENM == '정상'), hospital3.data.LOCALDATA_020301.row.filter((obj) => obj.DTLSTATENM == '정상')))
 
             //입양 대기 동물 데이터 , 입양 대기 동물 이미지 데이터
             const animal1 = await axios.get('http://openapi.seoul.go.kr:8088/674848546c73696e3130375966526375/json/TbAdpWaitAnimalView/1/100/')
             const animalImg1 = await axios.get('http://openapi.seoul.go.kr:8088/674848546c73696e3130375966526375/json/TbAdpWaitAnimalPhotoView/1/1000/')
-            setAnimal(animal1.data.TbAdpWaitAnimalView.row);
-            setAnimalImg(animalImg1.data.TbAdpWaitAnimalPhotoView.row);
 
 
             var value = [];
-            animal1 && animal1.data.TbAdpWaitAnimalView.row.map((an, akey) => (
+            var anName;
+            var center;
+            var imbo =false;
+            animal1 && animal1.data.TbAdpWaitAnimalView.row.map((an, akey) => {
+                anName = an.NM.slice(0,an.NM.indexOf('('));
+                center = an.NM.slice(an.NM.indexOf('(')+1,an.NM.indexOf(')'));
+                center = center.split('-');
+                if(center[1]){
+                    imbo = true;
+                }
+                center = center[0];
+                an.NM = anName;
+                an.CENTER = center;
+                an.IMBO = imbo;
+                /* let anName = an.NM.slice(0,an.NM.indexOf('(')); */
+                
                 animalImg1 && animalImg1.data.TbAdpWaitAnimalPhotoView.row.map((obj, key) => {
                     if (obj.ANIMAL_NO == an.ANIMAL_NO){
-                        value.push({ animal: an, img: { PHOTO_KND: obj.PHOTO_KND, PHOTO_URL: `https://${obj.PHOTO_URL}` } })
+                        value.push({ Animal: an, img: { PHOTO_KND: obj.PHOTO_KND, PHOTO_URL: `https://${obj.PHOTO_URL}` , PHOTO_NO : obj.PHOTO_NO }})
                     }
-                    setTotalAni(...totalAni,value)
+                    setAnimal(...animal,value)
              })
-            ))
+            })
 
         } catch (e) {
             setError(e);
@@ -63,84 +78,17 @@ const Context = ({ children }) => {
 
     if (loading) return <div>로딩중..</div>;
     if (error) return <div>에러가 발생했습니다</div>;
-    if (!pharmacy) return null;
-    if (!hospital) return null;
-    if (!animal) return null;
-    if (!animalImg) return null;
+/*     if (!pharmacy) return null;
+    if (!hospital) return null; */
+
 
 
 
     return (
-        <AnimalContext.Provider value={{ totalAni }}>
+        <AnimalContext.Provider value={{ animal }}>
             {children}
         </AnimalContext.Provider>
     )
 }
 
 export default Context
-/* import React, { useReducer, useEffect, createContext } from 'react';
-import axios from 'axios';
-export const animalContext = createContext(null);
-// 초기값, reducer 함수생성
-// 초기값: loading, data, error 
-const initialState = {
-    loading: false,
-    data: 0,
-    error: null
-}
-function reducer(state, action){
-    switch(action.type){
-        case 'LOADING':
-        return{
-            loading: true,
-            data: '',
-            error: null
-        };
-        case 'SUCCESS':
-        return {
-            loading: false,
-            data: action.data,
-            error: null
-        };
-        case 'ERROR':
-        return {
-            loading: false,
-            data: null,
-            error: action.error
-        };
-        default: 
-        return state;
-}
-}
-const Context = ({ children }) => {
-    const [ state, dispatch] = useReducer(reducer, initialState);
-    const fetchUsers = async () => {
-        dispatch({type: "LOADING"});
-        try{ 
-            const response = await axios.get('https://jsonplaceholder.typicode.com/users');
-            dispatch({ type:'SUCCESS', data:response.data });
-        }
-        catch(e) {
-            dispatch({type: 'ERROR', error: e})
-        }
-    }
-    useEffect(()=>{
-        fetchUsers();
-    }, []);
-    
-    const { loading, data, error } = state;
-    if(loading) return <div>로딩중...</div>
-    if(error) return <div>에러가 발생했습니다.</div>
-    //if(!data) return null
-    console.log(data);
-    return (
-        data &&<div>
-              <animalContext.Provider value={{data}}>
-            {children}
-        </animalContext.Provider>
-              
-            <button onClick={fetchUsers}>다시 불러오기</button>
-        </div>
-    );
-};
-export default Context  */
