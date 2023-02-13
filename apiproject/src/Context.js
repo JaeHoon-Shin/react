@@ -47,15 +47,13 @@ const Context = ({ children }) => {
                 anName = an.NM.slice(0,an.NM.indexOf('('));
                 center = an.NM.slice(an.NM.indexOf('(')+1,an.NM.indexOf(')'));
                 center = center.split('-');
-                if(center[1]){
-                    imbo = true;
-                }
+                center[1] != null ? imbo = "가능" : imbo = "불가능"
+                an.SEXDSTN == "M" ? an.SEXDSTN = '남아' : an.SEXDSTN = '여아';
                 center = center[0];
                 an.NM = anName;
                 an.CENTER = center;
                 an.IMBO = imbo;
-                /* let anName = an.NM.slice(0,an.NM.indexOf('(')); */
-                
+                an.INTRCN_MVP_URL = an.INTRCN_MVP_URL.slice(an.INTRCN_MVP_URL.lastIndexOf('/')+1)
                 animalImg1 && animalImg1.data.TbAdpWaitAnimalPhotoView.row.map((obj, key) => {
                     if (obj.ANIMAL_NO == an.ANIMAL_NO){
                         value.push({ Animal: an, img: { PHOTO_KND: obj.PHOTO_KND, PHOTO_URL: `https://${obj.PHOTO_URL}` , PHOTO_NO : obj.PHOTO_NO }})
@@ -74,7 +72,7 @@ const Context = ({ children }) => {
     }, []);
 
 
-
+    
 
     if (loading) return <div>로딩중..</div>;
     if (error) return <div>에러가 발생했습니다</div>;

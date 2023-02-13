@@ -12,7 +12,7 @@ function App() {
       <BrowserRouter>
         <header>
           <div className='header-top'>
-            <Link to="/"><img src='./img/logo.svg'></img></Link>
+            <Link to="/"><img src='../img/logo.svg'></img></Link>
             <h2><Link to="/">구해줘 홈즈</Link></h2>
             <ul className='text-box'>
               <li className='logout-box'><Link to="/login"><p>로그인</p></Link></li>
@@ -42,6 +42,14 @@ function App() {
         </Context>
 
       </BrowserRouter>
+      <footer>
+        <div className='footer-container'>
+
+            내용 들어갈 자리
+
+        </div>
+
+      </footer>
     </>
   );
 }
